@@ -242,6 +242,11 @@
   body
   h(1fr)
   $qed$
+    line(length: 100%,stroke:(
+    thickness: 0.5pt,
+    paint:luma(200),
+    dash:"dashed"
+  ))
 }
 
 #let solution(body, name: none, thmprefix: default-thmprefix, thmtitle: default-thmtitle) = context {
@@ -253,6 +258,11 @@
   body
   h(1fr)
   $rect.v.filled$
+  line(length: 100%,stroke:(
+    thickness: 0.5pt,
+    paint:luma(200),
+    dash:"dashed"
+  ))
 }
 
 #let show-thmenv(body) = {

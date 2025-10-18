@@ -1,5 +1,6 @@
 #import "lib.typ": math-note
 #import math-note: *
+#import "utils.typ":*
 
 
 #set text(lang: "zh")
@@ -20,12 +21,20 @@
 
 #include "chapters/ch1.typ"
 #include "chapters/ch2.typ"
-
+// #include "chapters/ch3.typ"
+// #include "chapters/ch4.typ"
+// #include "chapters/ch5.typ"
+// #include "chapters/ch6.typ"
+// #include "chapters/ch7.typ"
 
 #counter(heading).update(0)
 #counter(page).update(1)
 #set heading(numbering: "I.")
 
-= Index
-#v(0.5em)
+= Definitions
+#vv
 #columns(2, outline(title: none, target: figure.where(kind: "definition")))
+
+= Theorems
+#vv
+#columns(2, outline(title: none, target: figure.where(kind: "theorem")))

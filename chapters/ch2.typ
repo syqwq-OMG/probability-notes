@@ -239,7 +239,7 @@ $
 
 以下定理进一步说明了方差为0就意味着随机变量的取值几乎集中在一点上．
 
-#theorem()[
+#theorem(title: [单点分布])[
   若随机变量 $X$ 的方差存在，则
   $
     Var(X)=0 <=> P(X = c) = 1 <=> X=c "a.e."
@@ -600,13 +600,6 @@ $
 $
 从而， $Var(X) = Var(U) dot sigma^(2) = 1 dot sigma^(2) = sigma^(2)$ 。
 
-#remark(title: [Gamma函数的性质])[
-  - $Gamma(z)=(z-1)!$
-
-  - $Gamma(z)= integral_0^(oo) t^(z-1) e^(-t) dd(t)$
-  - $Gamma(frac(1, 2)) = sqrt(pi)$
-  - $Gamma(z+1) = z Gamma(z)$
-]
 
 #definition(title: [标准化])[
   对于任意随机变量 $X$，如果其数学期望和方差存在，则称
@@ -636,7 +629,7 @@ $
 ]
 
 #remark[
-  一般来说，如果 $X tilde.op F(x)$ 是连续型 r.v.
+  一般来说，如果 $X tilde.op F(x)$ 是连续型随机变量
   + 给定 $x$ 可以计算 $p=F(x)$，也就是 CDF
 
   + 给定 $p$ 可以计算 $x_p = F^(-1)(p)$，也就是 $p$-分位数
@@ -666,6 +659,406 @@ $
   $
 ]
 
+设随机变量 $X tilde.op N(mu,sigma^(2) )$，则
+$
+  P(mu-k sigma <= X <= mu + k sigma)
+  =P(abs(frac(X-mu, sigma)) <= k) = Phi(k) - Phi(-k) = 2 Phi(k) - 1
+$
+当 $k=1,2,3$ 时，分别有
+$
+      P(mu - sigma <= X <= mu + sigma) & = 2 Phi(1) - 1 approx 0.6826 \
+  P(mu - 2 sigma <= X <= mu + 2 sigma) & = 2 Phi(2) - 1 approx 0.9545 \
+  P(mu - 3 sigma <= X <= mu + 3 sigma) & = 2 Phi(3) - 1 approx 0.9973
+$
+
+=== 均匀分布
+
+#definition(title: [均匀分布])[
+  若随机变量 $X$ 的概率密度函数为
+  $
+    p(x) = cases(
+      display(frac(1, b-a)) \, quad & a <= x <= b,
+      0 \, & x < a or x > b
+    )
+  $
+  则称 $X$ 服从参数为 $(a, b)$ 的*均匀分布*，记作 $X tilde.op U(a, b)$。
+  #vv
+  #figure(
+    caption: [PDF and CDF of Uniform Distribution],
+    kind: "pic",
+    supplement: [Fig.],
+
+    box(
+      width: 80%,
+      grid(
+        columns: (1fr,) * 2,
+        column-gutter: 1em,
+        image("../pic/ch2/Uniform_Distribution_PDF_SVG.svg"), image("../pic/ch2/Uniform_cdf.svg"),
+      ),
+    ),
+  )
+]
+
+$U(a,b)$ 的 CDF 为
+$
+  F(x)= cases(
+    display(0) \, & x < a,
+    display(frac(x - a, b - a)) \, & a <= x <= b,
+    1 \, & x > b
+  )
+$
+
+设 $X tilde.op U(a,b)$，则
+$
+  E(X) = integral_(a)^(b) frac(x, b-a) dd(x) = frac(a+b, 2)
+$
+又有
+$
+  E(X^(2) ) = integral_(a)^(b) frac(x^(2), b-a) dd(x) = frac(b^(3) - a^(3), 3(b-a)) = frac(a^(2) + a b + b^(2), 3)
+$
+因此
+$
+  Var(X) = E(X^(2) ) - E(X)^(2) = frac((b-a)^(2), 12)
+$
+
+=== 指数分布
+#definition(title: [指数分布])[
+  设随机变量 $X$ 的概率密度函数为
+  $
+    p(x) = cases(
+      display(lambda e^(-lambda x)) \, & x >= 0,
+      0 \, & x < 0
+    )
+  $
+  则称 $X$ 服从参数为 $lambda$ 的*指数分布*，记作 $X tilde.op Exp(lambda)$。
+
+  #figure(
+    caption: [PDF and CDF of Exponential Distribution],
+    kind: "pic",
+    supplement: [Fig.],
+
+    box(
+      width: 80%,
+      grid(
+        columns: (1fr,) * 2,
+        column-gutter: 1em,
+        image("../pic/ch2/Exponential_distribution_pdf_-_public_domain.svg"),
+        image("../pic/ch2/Exponential_distribution_cdf_-_public_domain.svg"),
+      ),
+    ),
+  )
+]
+
+$Exp(lambda)$ 的 CDF 为
+$
+  F(x) = cases(
+    display(0) \, & x < 0,
+    display(1 - e^(-lambda x)) \, & x >= 0
+  )
+$
+
+设 $X tilde.op Exp(lambda)$，则
+$
+  E(X) = integral_(0)^(oo) x lambda e^(-lambda x) dd(x) = integral_(0)^(oo) x dd((- e^(-lambda x) )) = frac(1, lambda)
+$
+
+考虑
+$
+  E(X^(2) ) = integral_(0)^(oo) x^(2) lambda e^(-lambda x) dd(x) = integral_(0)^(oo) x^(2) dd((- e^(-lambda x) )) = frac(2, lambda^(2))
+$
+从而
+$
+  Var(X) = E(X^(2) ) - E(X)^(2) = frac(2, lambda^(2)) - (frac(1, lambda) )^(2) = frac(1, lambda^(2))
+$
+
+#remark[
+  对于指数分布 $Exp(lambda)$ 有时记 $theta := frac(1, lambda) = E(X)$.
+]
+
+#theorem(title: [指数分布的无记忆性])[
+  设随机变量 $X tilde.op Exp(lambda)$，则对于任意 $s, t >= 0$，有
+  $
+    P(X > s + t | X > s) = P(X > t)
+  $
+]
+#proof[
+  $
+    P(X > s + t | X > s) = frac(P(X > s + t), P(X > s))
+    = frac(e^(-lambda (s + t)), e^(-lambda s))
+    = e^(-lambda t) = P(X > t)
+  $
+]
+
+=== 伽马分布
+#definition(title: [$Gamma$ 函数])[
+  设复数 $z$ 的实部 $Re(z) > 0$，则称函数
+  $
+    Gamma(z) = integral_(0)^(oo) t^(z-1) e^(-t) dd(t)
+  $
+  为 *$Gamma$-函数*。
+  #figure(
+    caption: [The $Gamma$  function along part of the real axis],
+    kind: "pic",
+    supplement: [Fig.],
+
+    image("../pic/ch2/Gamma_plot.svg", width: 80%),
+  )
+]
+#property(title: [Gamma函数的性质])[
+  - $Gamma(z)=(z-1)!$
+
+  - $Gamma(frac(1, 2)) = sqrt(pi)$
+  - $Gamma(z+1) = z Gamma(z)$
+]
+
+// 伽马分布
+#definition(title: [伽马分布])[
+  若随机变量 $X$ 的概率密度函数为
+  $
+    p(x) = cases(
+      display(frac(lambda^(alpha), Gamma(alpha))) x^(alpha - 1) e^(-lambda x) \, quad & x >= 0,
+      0 \, & x < 0
+    )
+  $
+  则称 $X$ 服从参数为 $(alpha, lambda)$ 的*伽马分布*，记作 $X tilde.op Gamma(alpha, lambda)$。
+
+  #figure(
+    caption: [PDF and CDF of $Gamma$-Distribution],
+    kind: "pic",
+    supplement: [Fig.],
+
+    box(
+      width: 80%,
+      grid(
+        columns: (1fr,) * 2,
+        column-gutter: 1em,
+        image("../pic/ch2/Gammapdf252.svg"), image("../pic/ch2/Gammacdf252.svg"),
+      ),
+    ),
+  )
+]
+
+设 $X tilde.op Gamma(alpha, lambda)$，记 $theta = frac(1, lambda)$. 考虑 $X$ 的 $r$ 阶矩
+$
+  E(X^(r) ) &= integral_(0)^(oo) x^(r) frac(lambda^(alpha), Gamma(alpha)) x^(alpha - 1) e^(-lambda x) dd(x) \
+  &= frac(lambda^(alpha), Gamma(alpha)) integral_(0)^(oo) x^(r + alpha - 1) e^(-lambda x) dd(x) \
+  &= frac(lambda^(alpha), Gamma(alpha)) frac(1, lambda^(r + alpha)) integral_(0)^(oo) t^(r + alpha - 1) e^(-t) dd(t) \
+  &= theta^(r) dot frac(Gamma(r + alpha), Gamma(alpha))
+$
+
+从而，
+$
+  E(X) = alpha theta, quad Var(X) = alpha theta^(2)
+$
+
+#example(title: [指数分布])[
+  $alpha=1$ 时的伽马分布即为指数分布 $Exp(lambda)$，即 $Gamma(1, lambda) = Exp(lambda)$。
+]
+
+#definition(title: [$chi^(2)$ 分布 ])[
+  #vv
+  $alpha=frac(n, 2), lambda = frac(1, 2)$ 时的伽马分布称为 *$chi^(2)$ 分布*，记作 $X tilde.op chi^(2)(n)$，即
+  $
+    chi^(2) (n) tilde.op Gamma(frac(n, 2), frac(1, 2))
+  $
+  其概率密度函数为
+  $
+    p(x) = cases(
+      display(frac(1, 2^(frac(n, 2)) Gamma(frac(n, 2)))) e^(-frac(x, 2)) x^(frac(n, 2) - 1) \, quad & x >= 0,
+      0 \, & x < 0
+    )
+  $
+
+  这里的 $n$ 称为 *自由度*，可以是正实数，但一般是正整数。
+]
+
+若 $X tilde.op chi^(2)(n)$，则
+$
+  E(X) = n, quad Var(X) = 2 n
+$
+
+=== 贝塔分布
+
+#definition(title: [$Beta$ 函数])[
+  设 $a,b in CC$ 且 $Re(a), Re(b) > 0$ ，则称函数
+  $
+    Beta(a, b) = integral_(0)^(1) x^(a-1) (1 - x)^(b-1) dd(x)
+  $
+  为 *$Beta$-函数*。
+
+  #figure(
+    caption: [Contour plot of $Beta$ function],
+    kind: "pic",
+    supplement: [Fig.],
+
+    image("/pic/ch2/Beta_function.svg", width: 80%),
+  )
+]
+
+#property(title: [Beta函数的性质])[
+  - $Beta(a, b) = frac(Gamma(a) Gamma(b), Gamma(a + b))$
+
+  - $Beta(a, b) = Beta(b, a)$
+  - $Beta(a + 1, b) = frac(a, a+b) Beta(a, b)$
+]
+// 贝塔分布
+#definition(title: [贝塔分布])[
+  若随机变量 $X$ 的概率密度函数为
+  $
+    p(x) = cases(
+      display(frac(1, Beta(alpha, beta))) x^(alpha - 1) (1 - x)^(beta - 1) \, quad & 0 <= x <= 1,
+      0 \, & "otherwise"
+    )
+  $
+  则称 $X$ 服从参数为 $(alpha, beta)$ 的*贝塔分布*，记作 $X tilde.op Beta(alpha, beta)$。
+
+  #figure(
+    caption: [PDF and CDF of $Beta$  Distribution],
+    kind: "pic",
+    supplement: [Fig.],
+
+    box(
+      width: 80%,
+      grid(
+        columns: (1fr,) * 2,
+        column-gutter: 1em,
+        image("../pic/ch2/Beta_distribution_pdf.svg"), image("../pic/ch2/Beta_distribution_cdf.svg"),
+      ),
+    ),
+  )
+]
+
+设 $X tilde.op Beta(alpha, beta)$，则
+$
+  E(X) = frac(Gamma(alpha+beta), Gamma(alpha) Gamma(beta)) integral_(0)^(1) x^(alpha) (1 - x)^(beta - 1) dd(x)
+  = frac(Gamma(alpha+beta), Gamma(alpha) Gamma(beta)) dot frac(Gamma(alpha + 1) Gamma(beta), Gamma(alpha + beta+1))
+  = frac(alpha, alpha + beta)
+$
+又
+$
+  E(X^(2) ) & = frac(Gamma(alpha+beta), Gamma(alpha) Gamma(beta)) integral_(0)^(1) x^(alpha + 1) (1 - x)^(beta - 1) dd(x) \
+  & = frac(Gamma(alpha+beta), Gamma(alpha) Gamma(beta)) dot frac(Gamma(alpha + 2) Gamma(beta), Gamma(alpha + beta+2)) \
+  & = frac(alpha (alpha + 1), (alpha + beta)(alpha + beta + 1))
+$
+
+从而，
+$
+  Var(X) = E(X^(2) ) - E(X)^(2) = frac(alpha beta, (alpha + beta)^(2) (alpha + beta + 1))
+$
+
+=== 总结
+我们将常见的概率分布和方差做一下总结
+
+#let tcol = rgb("#4058e2")
+#show table.cell.where(y: 0): it => {
+  text(font: (en-font-sans, cn-font-sans), fill: tcol.darken(10%), strong(it))
+}
+
+#table(
+  columns: (auto, auto, auto, auto),
+  inset: 1em,
+  align: center + horizon,
+  stroke: 0.5pt + luma(200),
+  table.vline(x: 0, stroke: none),
+  table.vline(x: 4, stroke: none),
+  fill: (x, y) => {
+    if y == 0 { tcol.lighten(80%) }
+  },
+  table.header([分布], [PMF \/ PDF], [$E(X)$], [$Var(X)$]),
+  [二点分布], $p_k = p^(k) (1-p)^(1-k) \ k=0,1$, $p$, $p(1-p)$,
+  [二项分布 \ $b(n,p)$ ], $p_k = binom(n, k) p^(k) (1-p)^(n-k)\ k=0,1,...,n$, $n p$, $n p (1-p)$,
+  [泊松分布 \ $P(lambda)$ ], $p_k = frac(lambda^(k) e^(-lambda), k!), k=0,1,2,...$, $lambda$, $lambda$,
+  [超几何分布 \ $H(n,N,M)$ ],
+  $p_k = frac(binom(M, k) binom(N-M, n-k), binom(N, n)) \ k=0,1,dots.h.c r, r=min {M,n}$,
+  $frac(n M, N)$,
+  $frac(n M (N-M)(N-n), N^(2) (N-1))$,
+  [几何分布 \ $Ge(p)$ ], $p_k = (1-p)^(k-1) p\ k=1,2,dots.h.c$, $frac(1, p)$, $frac(1-p, p^(2))$,
+  [负二项分布 \ $Nb(r, p)$ ],
+  $p_k = binom(k-1, r-1) (1-p)^(k-r) p^(r)\ k=r,r+1,dots.h.c$,
+  $frac(r, p)$,
+  $frac(r(1-p), p^(2))$,
+  [正态分布 \ $N(mu, sigma^(2) )$ ],
+  $p(x) = frac(1, sqrt(2 pi) sigma) exp(- frac((x - mu)^(2), 2 sigma^(2)))\ -oo<x<oo$,
+  $mu$,
+  $sigma^(2)$,
+  [均匀分布 \ $U(a,b)$ ], $p(x) = frac(1, b-a), a<=x<=b$, $frac(a+b, 2)$, $frac((b-a)^(2), 12)$,
+  [指数分布 \ $Exp(lambda)$ ], $p(x) = lambda e^(-lambda x), x>=0$, $frac(1, lambda)$, $frac(1, lambda^(2))$,
+  [伽马分布 \ $Gamma(lambda)$ ],
+  $p(x) = frac(lambda^(alpha), Gamma(alpha)) x^(alpha-1) e^(-lambda x), x>=0$,
+  $alpha frac(1, lambda)$,
+  $alpha frac(1, lambda^(2))$,
+  [$chi^(2)$ 分布 \ $chi^(2) (n)$ ],
+  $p(x) = frac(1, 2^(frac(n, 2)) Gamma(frac(n, 2))) e^(-frac(x, 2)) x^(frac(n, 2)-1), x>=0$,
+  $n$,
+  $2 n$,
+  [贝塔分布 \ $Beta(alpha, beta)$ ],
+  $p(x) = frac(1, Beta(alpha, beta)) x^(alpha-1) (1-x)^(beta-1)\ 0<=x<=1$,
+  $frac(alpha, alpha+beta)$,
+  $frac(alpha beta, (alpha+beta)^(2) (alpha+beta+1))$,
+  [对数正态分布 \ $LN(mu, sigma^(2))$ ],
+  $p(x) = frac(1, sqrt(2 pi) sigma x) e^(- frac((ln x - mu)^(2), 2 sigma^(2)))\ x>0$,
+  $e^(mu + frac(1, 2) sigma^(2))$,
+  $(e^(sigma^(2)) - 1) e^(2 mu + sigma^(2))$,
+  [柯西分布 \ $Cau(mu, lambda)$ ], $p(x) = frac(1, pi) frac(lambda, lambda^(2) +(x-mu)^(2)) \ -oo<x<oo$, [DNE], [DNE],
+  [韦布尔分布 \ $Wb(eta, m)$ ],
+  $p(x) = F'(x) \ F(x) = 1-exp{-(frac(x, eta))^(m)}$,
+  $eta Gamma(1 + frac(1, m))$,
+  $eta^(2) [Gamma(1 + frac(2, m)) \ - Gamma^(2) (1 + frac(1, m))]$,
+)
+
+== 随机变量函数的分布
+已知随机变量 $X$ 的分布，求随机变量函数 $Y = g(X)$ 的分布是概率论中的一个重要问题。
+
+=== 离散随机变量函数的分布
+设离散型随机变量 $X$ 的取值为 $x_1, x_2, dots$，且对应的概率为 $p_1, p_2, dots$。设 $Y = g(X)$，则 $Y$ 的取值为 $y_i = g(x_i)$，且对应的概率为 $p_i$。如果存在 $i != j$ 使得 $y_i = y_j$，则将这些 $y_i$ 合并，其对应的概率为这些 $p_i$ 之和。
+
+
+=== 连续随机变量函数的分布
+离散随机变量的函数一定是离散型随机变量，但是连续型随机变量的函数不一定是连续的。
+
+当 $Y=g(X)$ 为离散型随机变量时，可以用离散随机变量函数的分布方法求解。
+
+当 $Y=g(X)$ 为严格单调函数时，可以用以下定理求解。
+#theorem(title: [连续随机变量函数的分布])[
+  设连续型随机变量 $X$ 的概率密度函数为 $p_X (x)$， $Y = g(X)$。 若 $y=g(x)$ 严格单调，其反函数 $h(y)$ 有连续导函数，则 $Y=g(X)$ 的密度函数为
+  $
+    p_(Y) (y) = cases(
+      p_(X) [h(y)] abs(h'(y)) \, quad & a<y<b,
+      0 \, & "otherwise"
+    )
+  $
+  其中， $a = min{g(-oo),g(oo)}, b = max{g(-oo),g(oo)}$.
+]
+
+#theorem(title: [正态变量的线性变换])[
+  设 $X tilde.op N(mu, sigma^(2))$，若 $a!=0$，则 $Y=a X+b tilde.op N(a mu + b, a^(2) sigma^(2))$.
+]
+
+#definition(title: [对数正态分布])[
+  若随机变量 $X$ 的对数 $ln(X)$ 服从参数为 $(mu, sigma^(2))$ 的正态分布，则称 $X$ 服从参数为 $(mu, sigma^(2))$ 的*对数正态分布*，记作 $X tilde.op LN(mu, sigma^(2))$。其概率密度函数为
+  $
+    p(x) = cases(
+      display(frac(1, sqrt(2 pi) sigma x) exp{- frac((ln x - mu)^(2), 2 sigma^(2))}) \, & x > 0,
+      0 \, & x <= 0
+    )
+  $
+
+
+  #figure(
+    caption: [PDF and CDF of Log-Normal Distribution],
+    kind: "pic",
+    supplement: [Fig.],
+
+    box(
+      width: 80%,
+      grid(
+        columns: (1fr,) * 2,
+        column-gutter: 1em,
+        image("../pic/ch2/PDF-log_normal_distributions.svg"), image("../pic/ch2/CDF-log_normal_distributions.svg"),
+      ),
+    ),
+  )
+]
 
 
 

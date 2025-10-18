@@ -6,3 +6,7 @@
 #let Var = math.op("Var")
 #let Ge = math.op("Ge")
 #let Nb = math.op("Nb")
+#let Exp = math.op("Exp")
+#let LN = math.op("LN")
+#let Cau = math.op("Cau")
+#let Wb = math.op("Wb")
