@@ -154,7 +154,7 @@ $
 #property(title: [期望的性质])[
   + 对于常数 $c$，有 $E(c) = c$
 
-  + 对于随机变量 $X$ 和常数 $c$，有 $E(c X) = c E(X)$
+  + 对于随机变量 $X$ 和常数 $a$，有 $E(a X) = a E(X)$
 
   + 对于随机变量 $X$ 和 $Y$，有 $E(X + Y) = E(X) + E(Y)$
 ]
@@ -175,7 +175,7 @@ $
 #definition(title: [标准差])[
   随机变量 $X$ 的*标准差*定义为方差的正平方根，即
   $
-    sigma = sigma(X) = sigma_(X) = sqrt(Var(X))
+    sigma(X) = sigma_(X) = sqrt(Var(X))
   $
 ]<def:standard-deviation>
 
@@ -679,6 +679,7 @@ $
 
   image("../pic/ch2/Standard_deviation_diagram_micro.svg", width: 80%),
 )
+#pagebreak()
 
 === 均匀分布
 

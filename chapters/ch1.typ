@@ -100,13 +100,13 @@
 #property(title: [事件的运算性质])[
   设 $A,B,C subset.eq Omega$ 是样本空间 $Omega$ 上的任意三个事件，则有：
 
-  1. 交换律： $A union B = B union A$， $A inter B = B inter A$.
+  1. *交换律*： $A union B = B union A$， $A inter B = B inter A$.
 
-  2. 结合律： $(A union B) union C = A union (B union C)$， $(A inter B) inter C = A inter (B inter C)$.
+  2. *结合律*： $(A union B) union C = A union (B union C)$， $(A inter B) inter C = A inter (B inter C)$.
 
-  3. 分配律： $A inter (B union C) = (A inter B) union (A inter C)$， $A union (B inter C) = (A union B) inter (A union C)$.
+  3. *分配律*： $A inter (B union C) = (A inter B) union (A inter C)$， $A union (B inter C) = (A union B) inter (A union C)$.
 
-  4. De Morgan 律： $overline(A union B) = overline(A) inter overline(B)$， $overline(A inter B) = overline(A) union overline(B)$.
+  4. *De Morgan 律*： $overline(A union B) = overline(A) inter overline(B)$， $overline(A inter B) = overline(A) union overline(B)$.
 ]
 
 // 事件域
@@ -147,7 +147,9 @@
   设 $(Omega, cal(F), P)$ 是一个测度空间，且满足 $P(Omega) = 1$. 则称 $(Omega, cal(F), P)$ 为一个*概率空间*，$P$ 称为 $Omega$ 上的一个*概率*.
 ]<def:probability-space>
 
+#pagebreak()
 == 概率的性质
+
 #property(title: [互补事件的概率])[
   设 $A subset.eq Omega$ 是样本空间 $Omega$ 上的一个事件，则有 $P(overline(A)) = 1 - P(A)$.
 ]
@@ -214,10 +216,10 @@
 
 #property(title: [条件概率是概率])[
   条件概率是概率，即
-  1. 非负性： 对任意事件 $A subset.eq Omega$，有 $P(A|B) >= 0$.
+  1. *非负性*： 对任意事件 $A subset.eq Omega$，有 $P(A|B) >= 0$.
 
-  2. 正则性： $P(Omega|B) = 1$.
-  3. 可列可加性： 对任意互不相容的事件列 $A_1,A_2,A_3,dots.h.c subset.eq Omega$，有 $ P(union.big_(i=1)^(oo) A_i mid(|) B) = sum_(i=1)^(oo) P(A_i mid(|) B) $
+  2. *正则性*： $P(Omega|B) = 1$.
+  3. *可列可加性*： 对任意互不相容的事件列 $A_1,A_2,A_3,dots.h.c subset.eq Omega$，有 $ P(union.big_(i=1)^(oo) A_i mid(|) B) = sum_(i=1)^(oo) P(A_i mid(|) B) $
 ]
 
 #property(title: [乘法公式])[
@@ -242,7 +244,7 @@
     kind: "pic",
     supplement: [Fig.],
 
-    image("../pic/ch1/totalsprobability.svg", width: 60%),
+    image("../pic/ch1/total-probability.svg", width: 60%),
   )
 ]<thm:total-probability-formula>
 对于全概率公式，我们要注意以下几点：
