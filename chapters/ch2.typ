@@ -122,7 +122,7 @@ $
 
 // 基于测度论的定义
 #definition(title: [数学期望])[
-  设 $X$ 是定义在 $(Omega, Sigma, P)$ 上的随机变量，则称 Lesbegue 积分
+  若 $X$ 是定义在 $(Omega, Sigma, P)$ 上的随机变量，则称 Lesbegue 积分
   $
     E(X) = integral_(Omega) X dd(P)
   $
@@ -207,7 +207,7 @@ $
 ]
 
 #theorem(title: [Markov 不等式])[
-  设随机变量 $X$ 的数学期望 $E(X)$ 存在，且 $X >= 0$，则对于任意 $a > 0$，有
+  若随机变量 $X$ 的数学期望 $E(X)$ 存在，且 $X >= 0$，则对于任意 $a > 0$，有
   $
     P(X >= a) <= frac(E(X), a)
   $
@@ -219,7 +219,7 @@ $
 ]
 
 #theorem(title: [Chebyshev 不等式])[
-  设随机变量 $X$ 的数学期望 $E(X)$ 和方差 $Var(X)$ 存在，则对于任意 $epsilon > 0$，有
+  若随机变量 $X$ 的数学期望 $E(X)$ 和方差 $Var(X)$ 存在，则对于任意 $epsilon > 0$，有
   $
     P(|X - mu| >= epsilon) <= frac(Var(X), epsilon^(2))
   $
@@ -257,7 +257,7 @@ $
 === 二项分布
 // 二项分布
 #definition(title: [二项分布])[
-  设随机变量 $X$ 表示在 $n$ 次独立重复的伯努利试验中成功的次数，且每次试验成功的概率为 $p$，则称 $X$ 服从参数为 $(n,p)$ 的*二项分布*，记作 $X tilde.op B(n,p)$，其分布列为
+  若随机变量 $X$ 表示在 $n$ 次独立重复的伯努利试验中成功的次数，且每次试验成功的概率为 $p$，则称 $X$ 服从参数为 $(n,p)$ 的*二项分布*，记作 $X tilde.op B(n,p)$，其分布列为
   $
     p(k) = P(X = k) = binom(n, k) p^(k) (1 - p)^(n - k), quad k = 0, 1, ..., n
   $
@@ -291,7 +291,7 @@ $
 
 // 原点矩
 #definition(title: [原点矩])[
-  设随机变量 $X$ 的第 $n$ 阶矩存在，则称
+  若随机变量 $X$ 的第 $n$ 阶矩存在，则称
   $
     mu'_(n) = E(X^(n))
   $
@@ -299,7 +299,7 @@ $
 ]<def:raw-moment>
 
 #definition(title: [中心矩])[
-  设随机变量 $X$ 的第 $n$ 阶中心矩存在，则称
+  若随机变量 $X$ 的第 $n$ 阶中心矩存在，则称
   $
     mu_(n) = E[(X - mu)^(n)]
   $
@@ -312,7 +312,7 @@ $
 
 // 阶乘矩
 #definition(title: [阶乘矩])[
-  设随机变量 $X$ 的第 $n$ 阶阶乘矩存在，则称
+  若随机变量 $X$ 的第 $n$ 阶阶乘矩存在，则称
   $
     mu^((r)) = E[X^((r))]
   $
@@ -343,7 +343,7 @@ $
 === 泊松分布
 
 #definition(title: [泊松分布])[
-  设随机变量 $X$ 的分布列为
+  若随机变量 $X$ 的分布列为
   $
     p(k) = P(X = k) = frac(lambda^(k) e^(-lambda), k!), quad k = 0, 1, 2, ...
   $
@@ -393,9 +393,10 @@ $
 === 超几何分布
 
 #definition(title: [超几何分布])[
-  设总体中有 $N$ 个个体，其中有 $M$ 个是某一特征的个体，从中不放回地随机抽取 $n$ 个个体，设随机变量 $X$ 表示所抽取的个体中具有该特征的个体数，则称 $X$ 服从参数为 $(N, M, n)$ 的*超几何分布*，记作 $X tilde.op H(N, M, n)$，其分布列为
+  // #show math.equation:set text(font:"TeX Gyre Termes Math")
+  设总体中有 $N$ 个个体，其中有 $M$ 个是某一特征的个体，从中不放回地随机抽取 $n$ 个个体，若随机变量 $X$ 表示所抽取的个体中具有该特征的个体数，则称 $X$ 服从参数为 $(N, M, n)$ 的*超几何分布*，记作 $X tilde.op H(N, M, n)$，其分布列为
   $
-    p(k) = P(X = k) = frac(binom(M, k) binom(N - M, n - k), binom(N, n)), quad max(0, n - N + M) <= k <= min(n, M)
+    p(k) = P(X = k) = frac(display(binom(M, k)) display(binom(N - M, n - k)), display(binom(N, n))), quad max(0, n - N + M) <= k <= min(n, M)
   $
 ]
 
@@ -577,7 +578,7 @@ $
   $
 ]
 
-从而，对于 $X tilde.op N(mu,sigma^(2) )$将，有
+从而，对于 $X tilde.op N(mu,sigma^(2) )$，有
 $
   P(a<=x<=b) = P(frac(a - mu, sigma) <= frac(x-mu, sigma) <= frac(b - mu, sigma)) = Phi(frac(b - mu, sigma)) - Phi(frac(a - mu, sigma))
 $
@@ -642,7 +643,7 @@ $
 ]
 
 #example(title: [标准正态分布的 $p$-分位数])[
-  若 r.v. $X tilde.op N(0,1)$，则对于 $0<p<1$， $u_p:=Phi^(-1)(p)$ 即为 $X$ 的 $p$-分位数。
+  若随机变量 $X tilde.op N(0,1)$，则对于 $0<p<1$， $u_p:=Phi^(-1)(p)$ 即为 $X$ 的 $p$-分位数。
 ]
 
 #problem(title: [正态分布的 $p$-分位数])[
@@ -670,6 +671,14 @@ $
   P(mu - 2 sigma <= X <= mu + 2 sigma) & = 2 Phi(2) - 1 approx 0.9545 \
   P(mu - 3 sigma <= X <= mu + 3 sigma) & = 2 Phi(3) - 1 approx 0.9973
 $
+
+#figure(
+  caption: [Empirical Rule],
+  kind: "pic",
+  supplement: [Fig.],
+
+  image("../pic/ch2/Standard_deviation_diagram_micro.svg", width: 80%),
+)
 
 === 均匀分布
 
@@ -949,32 +958,30 @@ $
 === 总结
 我们将常见的概率分布和方差做一下总结
 
-#let tcol = rgb("#061a87")
-// #let tcol = rgb("#6f1304")
-#show table.cell.where(y: 0): it => {
-  // show math.equation:set text(font:"Fira Math")
-  text(font: (en-font-sans, cn-font-sans), fill: tcol.darken(10%), strong(it))
-}
-
-#table(
+#summary-table(
   columns: (auto, auto, auto, auto),
-  inset: 1em,
-  align: center + horizon,
-  stroke: 0.5pt + tcol.lighten(70%),
-  table.vline(x: 0, stroke: none),
-  table.vline(x: 4, stroke: none),
-  fill: (x, y) => {
-    if y == 0 { tcol.lighten(96%) }
-  },
+
   table.header([分布], [PMF \/ PDF], [$E(X)$], [$Var(X)$]),
-  [二点分布], $p_k = p^(k) (1-p)^(1-k) \ k=0,1$, $p$, $p(1-p)$,
-  [二项分布 \ $b(n,p)$ ], $p_k = binom(n, k) p^(k) (1-p)^(n-k)\ k=0,1,...,n$, $n p$, $n p (1-p)$,
-  [泊松分布 \ $P(lambda)$ ], $p_k = frac(lambda^(k) e^(-lambda), k!), k=0,1,2,...$, $lambda$, $lambda$,
+  [二点分布],
+  $p_k = p^(k) (1-p)^(1-k) \ k=0,1$,
+  $p$,
+  $p(1-p)$,
+  [二项分布 \ $b(n,p)$ ],
+  $p_k = binom(n, k) p^(k) (1-p)^(n-k)\ k=0,1,...,n$,
+  $n p$,
+  $n p (1-p)$,
+  [泊松分布 \ $P(lambda)$ ],
+  $p_k = frac(lambda^(k) e^(-lambda), k!), k=0,1,2,...$,
+  $lambda$,
+  $lambda$,
   [超几何分布 \ $H(n,N,M)$ ],
   $p_k = frac(binom(M, k) binom(N-M, n-k), binom(N, n)) \ k=0,1,dots.h.c r, r=min {M,n}$,
   $frac(n M, N)$,
   $frac(n M (N-M)(N-n), N^(2) (N-1))$,
-  [几何分布 \ $Ge(p)$ ], $p_k = (1-p)^(k-1) p\ k=1,2,dots.h.c$, $frac(1, p)$, $frac(1-p, p^(2))$,
+  [几何分布 \ $Ge(p)$ ],
+  $p_k = (1-p)^(k-1) p\ k=1,2,dots.h.c$,
+  $frac(1, p)$,
+  $frac(1-p, p^(2))$,
   [负二项分布 \ $Nb(r, p)$ ],
   $p_k = binom(k-1, r-1) (1-p)^(k-r) p^(r)\ k=r,r+1,dots.h.c$,
   $frac(r, p)$,
@@ -983,8 +990,14 @@ $
   $p(x) = frac(1, sqrt(2 pi) sigma) exp(- frac((x - mu)^(2), 2 sigma^(2)))\ -oo<x<oo$,
   $mu$,
   $sigma^(2)$,
-  [均匀分布 \ $U(a,b)$ ], $p(x) = frac(1, b-a), a<=x<=b$, $frac(a+b, 2)$, $frac((b-a)^(2), 12)$,
-  [指数分布 \ $Exp(lambda)$ ], $p(x) = lambda e^(-lambda x), x>=0$, $frac(1, lambda)$, $frac(1, lambda^(2))$,
+  [均匀分布 \ $U(a,b)$ ],
+  $p(x) = frac(1, b-a), a<=x<=b$,
+  $frac(a+b, 2)$,
+  $frac((b-a)^(2), 12)$,
+  [指数分布 \ $Exp(lambda)$ ],
+  $p(x) = lambda e^(-lambda x), x>=0$,
+  $frac(1, lambda)$,
+  $frac(1, lambda^(2))$,
   [伽马分布 \ $Gamma(lambda)$ ],
   $p(x) = frac(lambda^(alpha), Gamma(alpha)) x^(alpha-1) e^(-lambda x) , x>=0$,
   $alpha frac(1, lambda)$,
@@ -1001,7 +1014,10 @@ $
   $p(x) = frac(1, sqrt(2 pi) sigma x) e^(- frac((ln x - mu)^(2), 2 sigma^(2)))\ x>0$,
   $e^(mu + frac(1, 2) sigma^(2))$,
   $(e^(sigma^(2)) - 1) e^(2 mu + sigma^(2))$,
-  [柯西分布 \ $Cau(mu, lambda)$ ], $p(x) = frac(1, pi) frac(lambda, lambda^(2) +(x-mu)^(2)) \ -oo<x<oo$, [DNE], [DNE],
+  [柯西分布 \ $Cau(mu, lambda)$ ],
+  $p(x) = frac(1, pi) frac(lambda, lambda^(2) +(x-mu)^(2)) \ -oo<x<oo$,
+  [DNE],
+  [DNE],
   [韦布尔分布 \ $Wb(eta, m)$ ],
   $p(x) = F'(x) \ F(x) = 1-exp{-(frac(x, eta))^(m)}$,
   $eta Gamma(1 + frac(1, m))$,

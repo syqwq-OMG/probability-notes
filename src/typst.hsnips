@@ -430,6 +430,13 @@ snippet lm "inline Math" wA
 $${1}$ $0
 endsnippet
 
+snippet dm "display Math" wA
+$
+${1}
+$
+$0
+endsnippet
+
 
 # ==== Common Environment ====
 

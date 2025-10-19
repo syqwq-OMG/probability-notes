@@ -10,3 +10,17 @@
 #let LN = math.op("LN")
 #let Cau = math.op("Cau")
 #let Wb = math.op("Wb")
+
+#let tcol = rgb("#061a87")
+// #let tcol = rgb("#6f1304")
+
+#let summary-table = table.with(
+  align: center + horizon,
+  stroke: 0.5pt + tcol.lighten(70%),
+  table.vline(x: 0, stroke: none),
+  table.vline(x: 4, stroke: none),
+  fill: (x, y) => {
+    if y == 0 { tcol.lighten(96%) }
+  },
+  inset: 1em,
+)

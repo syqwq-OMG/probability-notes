@@ -1,6 +1,6 @@
 #import "lib.typ": math-note
 #import math-note: *
-#import "utils.typ":*
+#import "utils.typ": *
 
 
 #set text(lang: "zh")
@@ -17,7 +17,16 @@
 
 #show enum: set par(first-line-indent: 0em)
 #set par(first-line-indent: 0em)
-#show math.equation.where(block: false):math.display
+#show math.equation.where(block: false): math.display
+
+#show table.cell.where(y: 0): it => {
+  // show math.equation:set text(font:"Fira Math")
+  text(
+    font: (en-font-sans, cn-font-sans),
+    fill: tcol.darken(10%),
+    strong(it),
+  )
+}
 
 #include "chapters/ch1.typ"
 #include "chapters/ch2.typ"
@@ -26,15 +35,4 @@
 // #include "chapters/ch5.typ"
 // #include "chapters/ch6.typ"
 // #include "chapters/ch7.typ"
-
-#counter(heading).update(0)
-#counter(page).update(1)
-#set heading(numbering: "I.")
-
-= Definitions
-#vv
-#columns(2, outline(title: none, target: figure.where(kind: "definition")))
-
-= Theorems
-#vv
-#columns(2, outline(title: none, target: figure.where(kind: "theorem")))
+#include "chapters/appendix.typ"

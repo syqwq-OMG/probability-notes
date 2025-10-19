@@ -236,6 +236,14 @@
   $
     P(A) = sum_(i=1)^(n) P(B_i) P(A mid(|) B_i)
   $
+
+  #figure(
+    caption: [Total Probability Formula],
+    kind: "pic",
+    supplement: [Fig.],
+
+    image("../pic/ch1/totalsprobability.svg", width: 60%),
+  )
 ]<thm:total-probability-formula>
 对于全概率公式，我们要注意以下几点：
 
@@ -256,6 +264,7 @@
     quad i=1,2,dots.h.c,n
   $
 ]<thm:bayes-formula>
+#pagebreak()
 
 == 独立性
 // 两个事件的独立性
