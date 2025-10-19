@@ -949,8 +949,10 @@ $
 === 总结
 我们将常见的概率分布和方差做一下总结
 
-#let tcol = rgb("#4058e2")
+#let tcol = rgb("#061a87")
+// #let tcol = rgb("#6f1304")
 #show table.cell.where(y: 0): it => {
+  // show math.equation:set text(font:"Fira Math")
   text(font: (en-font-sans, cn-font-sans), fill: tcol.darken(10%), strong(it))
 }
 
@@ -958,11 +960,11 @@ $
   columns: (auto, auto, auto, auto),
   inset: 1em,
   align: center + horizon,
-  stroke: 0.5pt + luma(200),
+  stroke: 0.5pt + tcol.lighten(70%),
   table.vline(x: 0, stroke: none),
   table.vline(x: 4, stroke: none),
   fill: (x, y) => {
-    if y == 0 { tcol.lighten(80%) }
+    if y == 0 { tcol.lighten(96%) }
   },
   table.header([分布], [PMF \/ PDF], [$E(X)$], [$Var(X)$]),
   [二点分布], $p_k = p^(k) (1-p)^(1-k) \ k=0,1$, $p$, $p(1-p)$,
@@ -984,11 +986,11 @@ $
   [均匀分布 \ $U(a,b)$ ], $p(x) = frac(1, b-a), a<=x<=b$, $frac(a+b, 2)$, $frac((b-a)^(2), 12)$,
   [指数分布 \ $Exp(lambda)$ ], $p(x) = lambda e^(-lambda x), x>=0$, $frac(1, lambda)$, $frac(1, lambda^(2))$,
   [伽马分布 \ $Gamma(lambda)$ ],
-  $p(x) = frac(lambda^(alpha), Gamma(alpha)) x^(alpha-1) e^(-lambda x), x>=0$,
+  $p(x) = frac(lambda^(alpha), Gamma(alpha)) x^(alpha-1) e^(-lambda x) , x>=0$,
   $alpha frac(1, lambda)$,
   $alpha frac(1, lambda^(2))$,
   [$chi^(2)$ 分布 \ $chi^(2) (n)$ ],
-  $p(x) = frac(1, 2^(frac(n, 2)) Gamma(frac(n, 2))) e^(-frac(x, 2)) x^(frac(n, 2)-1), x>=0$,
+  $p(x) = frac(1, 2^(frac(n, 2)) Gamma(frac(n, 2))) e^(-frac(x, 2)) x^(frac(n, 2)-1)\ x>=0$,
   $n$,
   $2 n$,
   [贝塔分布 \ $Beta(alpha, beta)$ ],
