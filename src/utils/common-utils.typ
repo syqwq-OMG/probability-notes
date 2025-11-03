@@ -1,4 +1,4 @@
-#import "@preview/itemize:0.1.2" as el
+#import "@preview/itemize:0.2.0" as el
 #import "@preview/zebraw:0.5.5": zebraw
 #import emoji: drops, eyes
 

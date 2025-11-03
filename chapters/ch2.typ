@@ -90,7 +90,7 @@ $
   设随机变量 $X$ 在区间 $[a,b]$ 上服从均匀分布，记作 $X tilde.op U(a,b)$ ，则其概率密度函数为
   $
     p(x) = cases(
-      display(frac(1, b-a))\, quad & a <= x <= b \
+      display(frac(1, b-a))\, quad & a <= x <= b ,
                                0\, & "else"
     )
   $
@@ -141,7 +141,7 @@ $
   若随机变量 $X$ 的分布用分布列 $Set(p_i)$ 或者 概率密度函数 $p(x)$ 表示，则 $X$ 的某一函数 $g(X)$ 的数学期望为
   $
     E(g(X))=cases(
-             display(sum_i g(x_i) p(x_i))\, quad quad & "离散型随机变量" \
+             display(sum_i g(x_i) p(x_i))\, quad quad & "离散型随机变量" ,
       display(integral_(-oo)^(oo) g(x) p(x) dd(x)) \, & "连续型随机变量"
     )
   $
@@ -189,7 +189,7 @@ $
 ]
 
 #property(title: [方差的性质])[
-  + $Var(X)= E(X^(2) )-E(X)^(2)$
+  + $Var(X)= E(X^(2) )-E(X)^(2)$.
   + 对于常数 $c$，有 $Var(c) = 0$
 
   + 对于随机变量 $X$ 和常数 $a,b$，有 $Var(a X + b) = a^(2) Var(X)$
@@ -345,7 +345,7 @@ $
 #definition(title: [泊松分布])[
   若随机变量 $X$ 的分布列为
   $
-    p(k) = P(X = k) = frac(lambda^(k) e^(-lambda), k!), quad k = 0, 1, 2, ...
+    p(k) = P(X = k) = frac(lambda^(k) e^(-lambda), k!), quad k = 0, 1, 2, dots.h.c
   $
   则称 $X$ 服从参数为 $lambda$ 的*泊松分布*，记作 $X tilde.op P(lambda)$。
 ]
@@ -405,7 +405,7 @@ $
 #definition(title: [几何分布])[
   在成功概率为 $p$ 的伯努利试验中，得到一次成功所需要的试验次数 $X$ 服从参数为 $p$ 的*几何分布*，记作 $X tilde.op Ge(p)$，其分布列为
   $
-    p(k) = P(X = k) = (1 - p)^(k - 1) p, quad k = 1, 2, ...
+    p(k) = P(X = k) = (1 - p)^(k - 1) p, quad k = 1, 2, dots.h.c
   $
 ]
 
@@ -431,7 +431,7 @@ $
 #definition(title: [负二项分布])[
   在伯努利试验中，记事件 $A$ 发生的概率是 $p$，如果 $X$ 为事件 $A$ 第 $r$  次出现时的试验次数，则 $X$ 服从参数为 $(r, p)$ 的*负二项分布*，记作 $X tilde.op Nb(r, p)$，其分布列为
   $
-    p(k) = P(X = k) = binom(k - 1, r - 1) (1 - p)^(k - r) p^(r), quad k = r, r + 1, ...
+    p(k) = P(X = k) = binom(k - 1, r - 1) (1 - p)^(k - r) p^(r), quad k = r, r + 1, dots.h.c
   $
 ]
 
@@ -439,7 +439,7 @@ $
   当 $r=1$ 时，负二项分布即为几何分布。
 ]
 
-#problem[
+#problem(title: [方差的性质])[
   设 $X$ 为随机变量，且 $X(Omega)subset.eq ZZ_(+)$. 若其方差存在，证明：
   $
     Var(X) = 2 sum_(n=1)^(oo) n P(X >=n) - E(X)[E(X)+1]
@@ -466,11 +466,11 @@ $
 
 ]
 
-#problem[
+#problem(title: [离散随机变量的期望])[
   设 $X$ 为仅取非负整数的离散随机变量，若其数学期望存在，证明：
-  + $E(X)=sum_(k=1)^(oo) P(X >= k)$
+  + $E(X)=sum_(k=1)^(oo) P(X >= k)$.
 
-  + $sum_(k=0)^(oo) k P(X>k)=frac(1, 2) lr(( E(X^(2))-E(X) ))$
+  + $sum_(k=0)^(oo) k P(X>k)=frac(1, 2) lr(( E(X^(2))-E(X) ))$.
   #vv
 ]
 #proof[
@@ -1131,6 +1131,34 @@ $
   $
   其中， $a = min{g(-oo),g(oo)}, b = max{g(-oo),g(oo)}$.
 ]
+#proof[
+  仅考虑有意义的部分，考虑 CDF 有 
+  $
+  F_(Y) (y) & = P(Y <= y) 
+             = P(g(X) <= y) 
+             = P(X <= h(y)) 
+             = F_(X) (h(y))
+  $
+  于是， 
+  $
+  integral_(-oo) ^(y) p_(Y) (t) dd(t) & = F_(Y) (y) 
+                             = F_(X) (h(y)) 
+                             = integral_(-oo)^(h(y)) p_(X) (x) dd(x)
+  $
+  两边对 $y$ 求导，得到
+  $
+    p_(Y) (y) = p_(X) [h(y)] |h'(y)|
+  $
+  加绝对值是因为概率测度不能为负，但是 $h'(y)$ 可能为负。
+]
+
+#remark[
+  其实，核心来说是
+  $
+  P_(Y)(y in A) = P_(X)(x in h(A)) => integral_(A) p_(Y)(y) dd(y) = integral_(h(A)) p_(X)(x) dd(x) 
+  $
+  剩下的就是微积分的换元积分法则了。
+]
 
 #theorem(title: [正态变量的线性变换])[
   设 $X tilde.op N(mu, sigma^(2))$，若 $a!=0$，则 $Y=a X+b tilde.op N(a mu + b, a^(2) sigma^(2))$.
@@ -1161,8 +1189,6 @@ $
     ),
   )
 ]
-
-
 
 
 

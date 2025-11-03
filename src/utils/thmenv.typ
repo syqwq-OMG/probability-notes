@@ -1,4 +1,4 @@
-#import "@preview/theorion:0.4.0": *
+#import "@preview/theorion:0.4.1": *
 #import "@preview/showybox:2.0.4": showybox
 #import "common-utils.typ": *
 #import "math-utils.typ": translation

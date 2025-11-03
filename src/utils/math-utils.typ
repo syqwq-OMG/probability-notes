@@ -58,7 +58,7 @@
 
   // 给带有 label 的公式编号
   show math.equation: it => {
-    if it.fields().keys().contains("label") {
+    if it.fields().keys().contains("label") and it.label != el.adv.native-format-label{
       math.equation(
         block: true,
         numbering: n => {

@@ -13,6 +13,10 @@
 #vv
 #outline(title: none, target: figure.where(kind: "theorem"))
 
+= Problems
+#vv
+#outline(title: none, target: figure.where(kind: "problem"))
+
 = Figures
 #vv
 #outline(title: none, target: figure.where(kind: "pic"))
