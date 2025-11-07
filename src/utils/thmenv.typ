@@ -222,7 +222,7 @@
 
 #let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
   "corollary",
-  theorion-i18n-map.at("corollary").zh.tw,
+  theorion-i18n-map.at("corollary").zh.cn,
   counter: theorem-counter,
   render: rect-box-style.with(fill: colors.at("2")),
 )

@@ -304,7 +304,7 @@ $
     mu_(n) = E[(X - mu)^(n)]
   $
   为随机变量 $X$ 的*第 $n$ 阶中心矩*，其中 $mu = E(X)$。
-]
+]<def:center-moment>
 
 #remark[
   记 $X^((r)):=X (X-1)(X-2) dots.h.c (X-r+1)$
@@ -646,7 +646,7 @@ $
   + $P(U>u) = 1- Phi(u)$
 ]
 
-#theorem(title: [标准化])[
+#theorem(title: [正态变量的标准化])[
   设随机变量 $X tilde.op N(mu, sigma^(2))$，则随机变量
   $U = frac(X - mu, sigma) tilde.op N(0, 1)$。
 ]
@@ -711,7 +711,7 @@ $
     caption: [Illustration of quantiles],
     image("../pic/ch2/Quantile.svg", height: 30%),
   )
-]
+]<def:quantile>
 
 #remark[
   一般来说，如果 $X tilde.op F(x)$ 是连续型随机变量
@@ -903,6 +903,8 @@ $
   - $Gamma(frac(1, 2)) = sqrt(pi)$
   - $Gamma(z+1) = z Gamma(z)$
 ]
+
+因为 $1 = frac(1, Gamma(a)) integral_(0)^(oo) t^(a-1) e^(-t) dd(t)$，所以可以看成是一个 CDF，于是可以定义伽马分布。
 
 // 伽马分布
 #definition(title: [伽马分布])[
@@ -1108,6 +1110,14 @@ $
   $eta^(2) [Gamma(1 + frac(2, m)) \ - Gamma^(2) (1 + frac(1, m))]$,
 )
 
+#definition(title: [连续随机变量分布的核])[
+  设 $X$ 是连续型随机变量， 概率密度函数为 $p(x)$。 若存在一个非负函数 $k(x)$ s.t. 
+  $
+  p(x) = c dot k(x)
+  $
+  其中， $c>0$ 是不依赖 $x$ 的常数，则称 $k(x)$ 是随机变量 $X$ 分布的*核*，也称 $p(x)$ 以  $k(x)$  为核，记作 $p(x) oc k(x)$.  
+]
+
 == 随机变量函数的分布
 已知随机变量 $X$ 的分布，求随机变量函数 $Y = g(X)$ 的分布是概率论中的一个重要问题。
 
@@ -1163,6 +1173,15 @@ $
 #theorem(title: [正态变量的线性变换])[
   设 $X tilde.op N(mu, sigma^(2))$，若 $a!=0$，则 $Y=a X+b tilde.op N(a mu + b, a^(2) sigma^(2))$.
 ]
+#proof[
+  使用核推导
+  $
+    p_(Y) (y) & oc p_(X) (frac(y - b, a)) oc exp(- frac((frac(y - b, a) - mu)^(2), 2 sigma^(2))) 
+               = exp(- frac((y - (a mu + b))^(2), 2 (a^(2) sigma^(2))))
+              
+  $
+   
+]
 
 #definition(title: [对数正态分布])[
   若随机变量 $X$ 的对数 $ln(X)$ 服从参数为 $(mu, sigma^(2))$ 的正态分布，则称 $X$ 服从参数为 $(mu, sigma^(2))$ 的*对数正态分布*，记作 $X tilde.op LN(mu, sigma^(2))$。其概率密度函数为
@@ -1190,14 +1209,35 @@ $
   )
 ]
 
+== 分布的其他特征数
+#theorion-restate(filter:it => it.label == <def:raw-moment>)
 
+#theorion-restate(filter:it => it.label == <def:center-moment>)
 
+#theorion-restate(filter: it => it.label == <def:quantile>)
 
+#definition(title:[中位数])[
+  设随机变量 $X$ 的分布函数为 $F(x)$，密度函数为 $p(x)$，称 $p=0.5$ 时的 $p$-分位数为*中位数*，即 $x_(0.5)$ 满足
+  $
+  integral_(-oo)^(x_(0.5)) p(x) dd(x) = 0.5
+  $
+     
+]
 
-
-
-
-
+#theorem(title:[$N^(2) (0,1) tilde.op chi^(2) (1)$ ])[
+  设随机变量 $X tilde.op N(0,1)$，则随机变量 $Y=X^(2) tilde.op chi^(2) (1)$。
+]
+#proof[
+  $X tilde.op N(0,1)$，则
+  $
+  p_(X) (x ) oc exp(-frac(1, 2) x^(2) )
+  $
+  从而 
+  $
+  p_(Y)(y) oc exp(-frac(1, 2)x) dot frac(1, sqrt(x))
+  $
+  因此， $Y tilde.op chi^(2) (1)$.
+]
 
 
 

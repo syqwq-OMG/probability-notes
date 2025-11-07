@@ -10,6 +10,7 @@
 #let LN = math.op("LN")
 #let Cau = math.op("Cau")
 #let Wb = math.op("Wb")
+#let oc = $prop$ 
 
 #let tcol = rgb("#061a87")
 // #let tcol = rgb("#6f1304")
@@ -24,3 +25,12 @@
   },
   inset: 1em,
 )
+
+// #[
+//     #set align(center)
+//     #import "@preview/cetz:0.4.2"
+//     #cetz.canvas({
+//       import cetz.draw: *
+
+//     })
+//   ]

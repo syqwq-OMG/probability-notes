@@ -32,7 +32,7 @@
 
       box(
         grid(
-          columns: (1fr,) * 3,
+          columns: (1fr, auto, 1fr),
           align: (horizon + left, horizon + center, horizon + right),
           box(height: 50%, image("../pic/ecnu-logo.svg")),
           box()[#context hydra(2, skip-starting: false)],
@@ -96,7 +96,8 @@
 
   pagebreak()
 
-  outline(depth: 3)
+
+  columns(1, outline(depth: 3))
 
   pagebreak()
 

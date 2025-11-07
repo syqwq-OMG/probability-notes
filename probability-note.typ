@@ -6,6 +6,7 @@
 #set text(lang: "zh")
 #show outline.entry: set text(fill: rgb("#136598"))
 #set outline.entry(fill: repeat(math.dot, gap: 0.12em))
+
 #show math.equation: set block(breakable: true)
 
 #show: note.with(
@@ -16,7 +17,7 @@
 
 
 #show enum: set par(first-line-indent: 0em)
-#set par(first-line-indent: 0em)
+#set par(first-line-indent: 0em, justify: true)
 #show math.equation.where(block: false): math.display
 
 #show table.cell.where(y: 0): it => {
@@ -30,7 +31,7 @@
 
 #include "chapters/ch1.typ"
 #include "chapters/ch2.typ"
-// #include "chapters/ch3.typ"
+#include "chapters/ch3.typ"
 // #include "chapters/ch4.typ"
 // #include "chapters/ch5.typ"
 // #include "chapters/ch6.typ"
